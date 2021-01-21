@@ -10,7 +10,7 @@ const Index = (props) => {
   return (
 
     <Container maxWidth="md">
-      <S.WrapperDisplayText data-sal="slide-up" data-sal-delay="30" data-sal-easing="ease">
+      <S.WrapperDisplayText data-sal="slide-up" data-sal-delay="30" data-sal-easing="slide-up">
         <Typography variant="h4" component="h2" gutterBottom>
           {props.title}
         </Typography>

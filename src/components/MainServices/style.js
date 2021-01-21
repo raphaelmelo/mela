@@ -46,6 +46,7 @@ export const ListItem = Styled.section`
     padding: 10px 0 0 0 ;
     color: #827e7e;
   }
+
 `
 
 export const CardStyled = Styled(Card)`
@@ -65,5 +66,9 @@ export const CardMediaStyled = Styled(CardMedia)`
   width:345px;
   height:150px;
   background: linear-gradient(to bottom,#e74c4c 0%,#e74c3c 100%);
+  
+  :hover {
+    
+  }
  
 `

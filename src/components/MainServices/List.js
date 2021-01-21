@@ -11,7 +11,7 @@ import * as S from './style'
 
 const ContentList = ListServices.map((item) => {
   return (
-    <S.CardStyled >
+    <S.CardStyled data-sal="slide-up" data-sal-delay="30" data-sal-easing="ease">
       <CardActionArea>
         <S.CardMediaStyled
           image={item.image}

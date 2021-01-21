@@ -76,8 +76,8 @@ const Index = () => {
    };
 
    return (
-      <Wrapper>
-       
+      <Wrapper data-sal="slide-up" data-sal-delay="50" data-sal-easing="ease">
+
          <Typography component="h3">
             FLUXO DE TRABALHO
          </Typography>

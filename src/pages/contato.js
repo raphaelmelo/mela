@@ -12,9 +12,9 @@ const IndexPage = (props) => {
 
   return (
     <>
-      <SEO title="Serviços" />
+      <SEO title="ContatoS" />
       <ActionButton />
-      <HomeSection text="Fale conosco" />
+      <HomeSection text="Entre em contato conosco" />
       <MainSection />
       <Footer />
     </>

@@ -5,7 +5,7 @@ import * as S from "./style"
 
 const index = () => {
   return (
-    <S.LogoStyled>
+    <S.LogoStyled >
       <Link to="/">
         <img src={LogoIMG} alt="Logo Melanina" />
       </Link>

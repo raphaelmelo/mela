@@ -12,9 +12,9 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO title="Serviços" />
+      <SEO title="Segunda-via" />
       <ActionButton />
-      <HomeSection text="Melanina Transporte & Logistica - 2ª via"/>
+      <HomeSection text="Segunda-via de Recibo" />
       <MainSection />
       <Footer />
     </>

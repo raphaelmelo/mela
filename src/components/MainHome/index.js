@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/global.css'
-import Galery from './Gallery/Gallery'
 
 import * as S from './style'
 
@@ -30,7 +29,6 @@ const Index = () => {
         portuário da América Latina, o Porto de Santos."
       />
 
-      <Galery />
 
 
     </S.WrapperIndex>

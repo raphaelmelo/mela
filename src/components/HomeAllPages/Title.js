@@ -4,7 +4,7 @@ import * as S from "./style"
 
 const Index = (props) => {
   return (
-    <S.WrapperText>
+    <S.WrapperText data-sal="slide-up" data-sal-delay="5" data-sal-easing="ease">
       <Typography variant="h1" component="h1" gutterBottom>
         {props.text}
       </Typography>

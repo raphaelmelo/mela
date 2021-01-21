@@ -3,21 +3,21 @@ import SEO from '../components/seo'
 
 import HomeSection from '../components/HomeAllPages'
 import MainSection from '../components/MainAbout'
- import ActionButton from '../components/ActionButton'
+import ActionButton from '../components/ActionButton'
 import Footer from '../components/Footer'
 
-  
+
 
 const IndexPage = (props) => {
- 
-  return(
+
+  return (
     <>
-    <SEO title="Serviços"/>
-    <ActionButton />
-    <HomeSection text="Transporte e Logística com efetividade" />
-    <MainSection />
-    <Footer />
-     </>
+      <SEO title="Sobre" />
+      <ActionButton />
+      <HomeSection text="Conheça nossos propositos" />
+      <MainSection />
+      <Footer />
+    </>
   )
 }
 
