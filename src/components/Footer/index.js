@@ -9,7 +9,7 @@ import { WrapperIndex } from './style';
 
 const Header = () => {
   return (
-    <WrapperIndex data-sal="slide-up" data-sal-delay="3" data-sal-easing="slide-up">
+    <WrapperIndex>
       <Logo />
       <Nav />
       <Text />
