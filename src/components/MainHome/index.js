@@ -6,7 +6,7 @@ import * as S from './style'
 import DisplayText from './displayText'
 import Accordion from './Accordion'
 
-
+import { GalleryComponent } from './Gallery'
 
 
 const Index = () => {
@@ -18,8 +18,6 @@ const Index = () => {
         prestando serviços à despachantes aduaneiros, tradings, 
         indústrias importadoras e exportadoras."
       />
-
-
       <Accordion />
       <DisplayText
         title="Nosso background e credibilidade"
@@ -28,7 +26,7 @@ const Index = () => {
         superar seus principais desafios logísticos no maior complexo
         portuário da América Latina, o Porto de Santos."
       />
-
+      <GalleryComponent />
 
 
     </S.WrapperIndex>
