@@ -1,4 +1,5 @@
 import Styled from "styled-components";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 export const WrapperIndex = Styled.main`
@@ -48,6 +49,11 @@ export const Wrapper = Styled.div`
   }
    
 `;
+export const DivField = Styled.div`
+  padding: 15px 0;
+`
+
+
 
 export const StyledErr = Styled.article`
   margin:20px 0 0!important ;
@@ -76,3 +82,9 @@ export const WrapperButton = Styled.div`
   }
 `
 
+export const Circle = Styled(CircularProgress)`
+
+  svg {
+    color: #47261A;
+  }
+`

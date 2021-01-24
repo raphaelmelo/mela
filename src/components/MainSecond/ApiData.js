@@ -32,16 +32,23 @@ export default function index() {
   const [number, setNumber] = useState({ cep: "" });
   const [URL, setURL] = useState("");
   const [errorAPI, seterroAPI] = useState("");
+  const [Load, setLoad] = useState(true);
 
 
   const getURL = () => {
+    setLoad(!Load)
+    seterroAPI("")
+
     axios
       .get(
         `https://strapimelanina.herokuapp.com/enviar-segunda-vias?CPF=${number}`
       )
       .then((response) => {
+        setLoad(true)
         setURL(response.data[0].Arquivo[0].url);
+        setNumber()
       }).catch((err) => {
+        setLoad(true)
         seterroAPI(<S.StyledErr>CPF incorreto (digite seu documento sem pontos e hífen). </S.StyledErr>);
         setURL("");
 
@@ -52,9 +59,16 @@ export default function index() {
     setNumber(e.target.value);
   };
 
+  const Content = (
+    <S.WrapperButton>
+      {" "}<p>Olá Caminhoneiro, clique no botão para fazer o download da segunda-via:</p>{" "}
+      <DownloadLink label="Baixar Recibo" filename={URL} />{" "}
+    </S.WrapperButton>
+  )
+
   return (
     <S.Wrapper>
-      <div>
+      <S.DivField>
         <TextField
           className={classes.root}
           type="number"
@@ -70,21 +84,9 @@ export default function index() {
         <Button onClick={getURL} type="submit">
           Enviar
         </Button>
-      </div>
-      <ul>
-        <li>
-          {
-            (((URL) && (
-              <WrapperButton>
-                {" "}
-                <p>
-                  Olá Caminhoneiro, clique no botão para fazer o download da segunda-via:
-              </p>{" "}
-                <DownloadLink label="Baixar Recibo" filename={URL} />{" "}
-              </WrapperButton>
-            )) || errorAPI) || <p></p>}
-        </li>
-      </ul>
+      </S.DivField>
+      {(((URL) && Content) || errorAPI) || <p></p>}
+      {Load || <S.Circle />}
     </S.Wrapper>
   );
 }
