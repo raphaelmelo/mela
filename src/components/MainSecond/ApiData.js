@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DownloadLink from "react-download-link";
-
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { cpf } from "cpf-cnpj-validator";
 
-import * as S from "./style"
+import * as S from "./style";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -25,7 +24,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 export default function index() {
   const classes = useStyles();
 
@@ -34,37 +32,58 @@ export default function index() {
   const [errorAPI, seterroAPI] = useState("");
   const [Load, setLoad] = useState(true);
 
-
   const getURL = () => {
-    setLoad(!Load)
-    seterroAPI("")
+    setLoad(!Load);
+    seterroAPI("");
 
-    axios
-      .get(
-        `https://strapimelanina.herokuapp.com/enviar-segunda-vias?CPF=${number}`
-      )
-      .then((response) => {
-        setLoad(true)
-        setURL(response.data[0].Arquivo[0].url);
-        setNumber()
-      }).catch((err) => {
-        setLoad(true)
-        seterroAPI(<S.StyledErr>CPF incorreto (digite seu documento sem pontos e hífen). </S.StyledErr>);
-        setURL("");
+    const isCPF = cpf.isValid(number);
 
-      })
+    if (isCPF) {
+      axios
+        .get(
+          `https://strapimelanina.herokuapp.com/enviar-segunda-vias?CPF=${number}`
+        )
+        .then((response) => {
+          setLoad(true);
+          setURL(response.data[0].Arquivo[0].url);
+          setNumber();
+        })
+        .catch((err) => {
+          setLoad(true);
+          seterroAPI(
+            <S.StyledErr>Ainda não cadastramos recibo nesse CPF.</S.StyledErr>
+          );
+          setURL("");
+        });
+    } else {
+      seterroAPI(
+        <S.StyledErr>
+          Número de CPF invalido. (digite seu documento sem pontos){" "}
+        </S.StyledErr>
+      );
+      setLoad(true);
+    }
   };
 
   const handlingNumber = (e) => {
     setNumber(e.target.value);
   };
 
+  const URLDOWNLOAD = (
+    <a href={URL} download target="_blank">
+      abrir recibo
+    </a>
+  );
+
   const Content = (
     <S.WrapperButton>
-      {" "}<p>Olá Caminhoneiro, clique no botão para fazer o download da segunda-via:</p>{" "}
-      <DownloadLink label="Baixar Recibo" filename={URL} />{" "}
+      {" "}
+      <p>
+        Olá Caminhoneiro, clique no botão abaixo:
+      </p>{" "}
+      {URLDOWNLOAD}
     </S.WrapperButton>
-  )
+  );
 
   return (
     <S.Wrapper>
@@ -85,7 +104,7 @@ export default function index() {
           Enviar
         </Button>
       </S.DivField>
-      {(((URL) && Content) || errorAPI) || <p></p>}
+      {(URL && Content) || errorAPI || <p></p>}
       {Load || <S.Circle />}
     </S.Wrapper>
   );

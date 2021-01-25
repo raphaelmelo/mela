@@ -65,9 +65,9 @@ export const WrapperButton = Styled.div`
   flex-direction:column;
   height:200px;
   justify-content:center;
-    
+     
   a {
-    width:60px!important;
+    width:120px!important;
 
      color:#fff !important;
     background:#fb4d55 !important;
@@ -79,7 +79,10 @@ export const WrapperButton = Styled.div`
     font-weight:400!important;
     padding:20px!important;
 
+
+
   }
+ 
 `
 
 export const Circle = Styled(CircularProgress)`
